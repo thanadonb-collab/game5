@@ -1,0 +1,1164 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/Level.gd" id="1_ab8bd"]
+[ext_resource type="PackedScene" path="res://Scenes/Platform.tscn" id="2_w5ayf"]
+[ext_resource type="PackedScene" path="res://Scenes/NatureProp.tscn" id="3_ya3ly"]
+[ext_resource type="PackedScene" path="res://Scenes/Coin.tscn" id="4_458el"]
+[ext_resource type="PackedScene" path="res://Scenes/Traps/FallingPlatform.tscn" id="5_ok1eh"]
+[ext_resource type="PackedScene" path="res://Scenes/Traps/Spinner.tscn" id="6_rl2o4"]
+[ext_resource type="PackedScene" path="res://Scenes/Traps/MovingPlatform.tscn" id="7_rsd5h"]
+[ext_resource type="PackedScene" path="res://Scenes/Traps/SpikeTrap.tscn" id="8_tbesk"]
+[ext_resource type="FontVariation" path="res://Assets/Fonts/GameFont.tres" id="9_gyiht"]
+[ext_resource type="PackedScene" path="res://Scenes/Checkpoint.tscn" id="10_4ljym"]
+[ext_resource type="PackedScene" path="res://Scenes/Door.tscn" id="11_nwpaj"]
+[ext_resource type="ArrayMesh" path="res://Assets/Resources/cloud.res" id="12_yanqf"]
+[ext_resource type="PackedScene" path="res://Scenes/player.tscn" id="13_m2631"]
+[ext_resource type="PackedScene" path="res://Scenes/DeadZone.tscn" id="14_uk4s3"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/HUD.tscn" id="15_ihite"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8cywt"]
+sky_top_color = Color(0.22, 0.16, 0.42, 1)
+sky_horizon_color = Color(1, 0.55, 0.38, 1)
+ground_bottom_color = Color(0.15, 0.1, 0.2, 1)
+ground_horizon_color = Color(1, 0.55, 0.38, 1)
+sun_angle_max = 20.0
+
+[sub_resource type="Sky" id="Sky_vv18r"]
+sky_material = SubResource("ProceduralSkyMaterial_8cywt")
+
+[sub_resource type="Environment" id="Environment_1h2yl"]
+background_mode = 2
+sky = SubResource("Sky_vv18r")
+ambient_light_source = 3
+ambient_light_energy = 0.55
+tonemap_mode = 2
+tonemap_exposure = 0.9
+glow_enabled = true
+glow_intensity = 0.35
+fog_enabled = true
+fog_light_color = Color(0.55, 0.38, 0.5, 1)
+fog_density = 0.005
+fog_sky_affect = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xt2d6"]
+albedo_color = Color(0.25, 0.15, 0.35, 1)
+roughness = 0.45
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nw6kd"]
+size = Vector2(800, 800)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pc3ex"]
+albedo_color = Color(0.25, 0.18, 0.15, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wl62r"]
+top_radius = 0.06
+bottom_radius = 0.08
+radial_segments = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_laorw"]
+albedo_color = Color(1, 0.7, 0.35, 1)
+emission_enabled = true
+emission = Color(1, 0.7, 0.35, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_plyu7"]
+radius = 0.22
+height = 0.44
+radial_segments = 8
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l84e7"]
+albedo_color = Color(0.25, 0.18, 0.15, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_m4te8"]
+top_radius = 0.06
+bottom_radius = 0.08
+radial_segments = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7i2wu"]
+albedo_color = Color(1, 0.7, 0.35, 1)
+emission_enabled = true
+emission = Color(1, 0.7, 0.35, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_2cl3l"]
+radius = 0.22
+height = 0.44
+radial_segments = 8
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qq3dl"]
+albedo_color = Color(0.25, 0.18, 0.15, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hlgih"]
+top_radius = 0.06
+bottom_radius = 0.08
+radial_segments = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1brv"]
+albedo_color = Color(1, 0.7, 0.35, 1)
+emission_enabled = true
+emission = Color(1, 0.7, 0.35, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_mypd1"]
+radius = 0.22
+height = 0.44
+radial_segments = 8
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6uab"]
+albedo_color = Color(0.25, 0.18, 0.15, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fqugr"]
+top_radius = 0.06
+bottom_radius = 0.08
+radial_segments = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bv0qk"]
+albedo_color = Color(1, 0.7, 0.35, 1)
+emission_enabled = true
+emission = Color(1, 0.7, 0.35, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_pago5"]
+radius = 0.22
+height = 0.44
+radial_segments = 8
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifigw"]
+albedo_color = Color(0.25, 0.18, 0.15, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pe0d0"]
+top_radius = 0.06
+bottom_radius = 0.08
+radial_segments = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yf0ma"]
+albedo_color = Color(1, 0.7, 0.35, 1)
+emission_enabled = true
+emission = Color(1, 0.7, 0.35, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_vt7u7"]
+radius = 0.22
+height = 0.44
+radial_segments = 8
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c1qal"]
+albedo_color = Color(0.25, 0.18, 0.15, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6ll2v"]
+top_radius = 0.06
+bottom_radius = 0.08
+radial_segments = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_si2ly"]
+albedo_color = Color(1, 0.7, 0.35, 1)
+emission_enabled = true
+emission = Color(1, 0.7, 0.35, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_iydc0"]
+radius = 0.22
+height = 0.44
+radial_segments = 8
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gniti"]
+shading_mode = 0
+albedo_color = Color(1, 0.75, 0.75, 1)
+
+[node name="Level2" type="Node3D" unique_id=1101127749]
+script = ExtResource("1_ab8bd")
+level_index = 1
+level_name = "ด่าน 2 : Autumn Twilight"
+level_subtitle = "ป่าใบไม้แดงยามพลบค่ำ — ระวังพื้นถล่ม!"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=568763751]
+environment = SubResource("Environment_1h2yl")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=1199736379]
+transform = Transform3D(0.49999997, -0.2676166, 0.82363915, 0, 0.95105654, 0.309017, -0.86602545, -0.15450849, 0.47552824, 0, 0, 0)
+light_color = Color(1, 0.68, 0.42, 1)
+shadow_enabled = true
+directional_shadow_max_distance = 70.0
+
+[node name="Water" type="MeshInstance3D" parent="." unique_id=1425572628]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, 0)
+material_override = SubResource("StandardMaterial3D_xt2d6")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_nw6kd")
+
+[node name="Platforms" type="Node3D" parent="." unique_id=228145581]
+
+[node name="Platform" parent="Platforms" unique_id=711754754 instance=ExtResource("2_w5ayf")]
+size = Vector3(12, 3, 12)
+style = "autumn"
+round_shape = true
+
+[node name="Platform2" parent="Platforms" unique_id=666744719 instance=ExtResource("2_w5ayf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.5, 0)
+size = Vector3(10, 3, 10)
+style = "moss"
+
+[node name="Platform3" parent="Platforms" unique_id=709203349 instance=ExtResource("2_w5ayf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 4.1, -14)
+style = "autumn"
+
+[node name="Platform4" parent="Platforms" unique_id=1829365628 instance=ExtResource("2_w5ayf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 4.1, -27)
+size = Vector3(4, 2, 16)
+style = "stone"
+
+[node name="Platform5" parent="Platforms" unique_id=92920428 instance=ExtResource("2_w5ayf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4.1, -38.6)
+size = Vector3(10, 3, 10)
+style = "autumn"
+round_shape = true
+
+[node name="Platform6" parent="Platforms" unique_id=855798396 instance=ExtResource("2_w5ayf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 6, -62)
+size = Vector3(10, 3, 10)
+style = "moss"
+
+[node name="Decorations" type="Node3D" parent="." unique_id=143199789]
+
+[node name="DeadTree_2" parent="Decorations" unique_id=1713222164 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.3525576, 0, -0.6884186, 0, 0.77344495, 0, 0.6884186, 0, -0.3525576, -4.1883197, 0, 2.4589689)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_2"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="MapleTree_4" parent="Decorations" unique_id=1630775061 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.007876492, 0, 0.80247504, 0, 0.80251366, 0, -0.80247504, 0, 0.007876492, 1.5802712, 0, 4.183831)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_4"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="MapleTree_2" parent="Decorations" unique_id=1214032 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.35075665, 0, 0.14372316, 0, 0.37906012, 0, -0.14372316, 0, -0.35075665, -4.5927067, 0, 1.5484763)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_2"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="MapleTree_3" parent="Decorations" unique_id=2034485986 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.031722832, 0, -0.4511438, 0, 0.45225772, 0, 0.4511438, 0, -0.031722832, 1.9145031, 0, 4.5211906)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_2"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_1" parent="Decorations" unique_id=257704169 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.017159712, 0, 0.6781444, 0, 0.6783615, 0, -0.6781444, 0, -0.017159712, 0.816502, 0, -4.0333714)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_1"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="MapleTree_1" parent="Decorations" unique_id=1153794173 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.053821698, 0, -0.5090628, 0, 0.5119001, 0, 0.5090628, 0, -0.053821698, -3.4714475, 0, -2.6461453)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_1"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="Flower_2_Clump" parent="Decorations" unique_id=558018393 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(1.348599, 0, -1.096589, 0, 1.7381676, 0, 1.096589, 0, 1.348599, 4.2108264, 0, -3.333525)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_2_Clump"
+
+[node name="Rock_2" parent="Decorations" unique_id=1722958649 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.327643, 0, -0.45583814, 0, 0.56137186, 0, 0.45583814, 0, 0.327643, 4.3980665, 0, -0.40805212)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_2"
+
+[node name="Rock_1" parent="Decorations" unique_id=250305561 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.44350865, 0, -0.27250355, 0, 0.52053636, 0, 0.27250355, 0, 0.44350865, 2.3122854, 0, 0.50571275)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_1"
+
+[node name="Rock_3" parent="Decorations" unique_id=1977586947 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.5046785, 0, -0.4868274, 0, 0.7012142, 0, 0.4868274, 0, -0.5046785, 3.1019948, 0, 2.8336067)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_1"
+
+[node name="DeadTree_5" parent="Decorations" unique_id=916734343 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.52363545, 0, -0.4618699, 0, 0.6982248, 0, 0.4618699, 0, -0.52363545, -4.9003763, 0, 0.63720727)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_5"
+
+[node name="Flower_2_Clump2" parent="Decorations" unique_id=50452911 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-1.3260778, 0, 1.2103205, 0, 1.7953713, 0, -1.2103205, 0, -1.3260778, 3.1932707, 0, -1.4757446)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_2_Clump"
+
+[node name="Rock_4" parent="Decorations" unique_id=1868074549 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.58852804, 0, 0.139903, 0, 0.6049282, 0, -0.139903, 0, -0.58852804, 0.6403328, 0, -2.9984186)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_1"
+
+[node name="Plant_1" parent="Decorations" unique_id=1593192521 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.690174, 0, 0.38906497, 0, 0.7922826, 0, -0.38906497, 0, -0.690174, 3.0327094, 0, -0.4121273)
+source = "res://Assets/Models/Nature/Bushes.glb"
+mesh_name = "Plant_1"
+
+[node name="Grass_Small" parent="Decorations" unique_id=1548139390 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.5453675, 0, 1.0754368, 0, 1.2058151, 0, -1.0754368, 0, -0.5453675, -3.4647467, 0, -0.6416033)
+source = "res://Assets/Models/Nature/Grass.glb"
+mesh_name = "Grass_Small"
+
+[node name="Flower_2_Clump3" parent="Decorations" unique_id=1881340861 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.12810643, 0, 1.2410731, 0, 1.2476673, 0, -1.2410731, 0, 0.12810643, -3.7413557, 0, 2.9075847)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_2_Clump"
+
+[node name="Grass_Small2" parent="Decorations" unique_id=2030059619 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-1.4358256, 0, -0.9426889, 0, 1.7176313, 0, 0.9426889, 0, -1.4358256, 2.9697225, 0, 1.8465562)
+source = "res://Assets/Models/Nature/Grass.glb"
+mesh_name = "Grass_Small"
+
+[node name="Plant_2" parent="Decorations" unique_id=545905018 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.8856146, 0, 0.433905, 0, 0.9861981, 0, -0.433905, 0, 0.8856146, 0.23971216, 0, -5.258329)
+source = "res://Assets/Models/Nature/FlowerBushes.glb"
+mesh_name = "Plant_2"
+
+[node name="Rock_5" parent="Decorations" unique_id=1397703083 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.7186521, 0, -0.027617723, 0, 0.7191826, 0, 0.027617723, 0, -0.7186521, -2.0508165, 0, 2.1790028)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_1"
+
+[node name="Grass_Large_Extruded" parent="Decorations" unique_id=115434206 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.79928976, 0, -0.89109343, 0, 1.1970428, 0, 0.89109343, 0, 0.79928976, -0.4920832, 0, -4.6646376)
+source = "res://Assets/Models/Nature/Grass.glb"
+mesh_name = "Grass_Large_Extruded"
+
+[node name="MapleTree_5" parent="Decorations" unique_id=1721843135 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.87758255, 0, 0.47942555, 0, 1, 0, -0.47942555, 0, 0.87758255, 31, 0.5, 4)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_4"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_3" parent="Decorations" unique_id=1472225869 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.48769468, 0, 0.5021492, 0, 0.7, 0, -0.5021492, 0, 0.48769468, 7.6, 4.1, -39.5)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_2"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="MapleTree_6" parent="Decorations" unique_id=1567522670 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.44102997, 0, 0.08940119, 0, 0.45, 0, -0.08940119, 0, 0.44102997, 8, 6, -59)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_1"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_4" parent="Decorations" unique_id=272499211 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.2913028, 0, 0.63650817, 0, 0.7, 0, -0.63650817, 0, -0.2913028, 16, 6, -59.5)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_3"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="Rock_6" parent="Decorations" unique_id=1658486978 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.5862782, 0, -0.12758495, 0, 0.6, 0, 0.12758495, 0, 0.5862782, 14.573678, 6, -60.732998)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_1"
+
+[node name="Rock_7" parent="Decorations" unique_id=367277399 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.5947099, 0, -0.07949956, 0, 0.6, 0, 0.07949956, 0, 0.5947099, 13.060288, 6, -58.693607)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_2"
+
+[node name="Grass_Large_Extruded2" parent="Decorations" unique_id=2022934227 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.819265, 0, -1.1352553, 0, 1.4, 0, 1.1352553, 0, -0.819265, 10.426436, 6, -59.683594)
+source = "res://Assets/Models/Nature/Grass.glb"
+mesh_name = "Grass_Large_Extruded"
+
+[node name="Grass_Small3" parent="Decorations" unique_id=1632655283 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-1.4657078, 0, -0.31890544, 0, 1.5, 0, 0.31890544, 0, -1.4657078, 14.246796, 6, -58.90572)
+source = "res://Assets/Models/Nature/Grass.glb"
+mesh_name = "Grass_Small"
+
+[node name="Plant_3" parent="Decorations" unique_id=1526968675 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.19760895, 0, 0.8780379, 0, 0.9, 0, -0.8780379, 0, -0.19760895, 13.424095, 6, -60.573345)
+source = "res://Assets/Models/Nature/Bushes.glb"
+mesh_name = "Plant_1"
+
+[node name="Plant_4" parent="Decorations" unique_id=1945290270 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.8290874, 0, -0.35016295, 0, 0.9, 0, 0.35016295, 0, -0.8290874, 13.581288, 6, -59.46956)
+source = "res://Assets/Models/Nature/FlowerBushes.glb"
+mesh_name = "Plant_2"
+
+[node name="Coins" type="Node3D" parent="." unique_id=1679413510]
+
+[node name="Coin" parent="Coins" unique_id=1162905343 instance=ExtResource("4_458el")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.5)
+
+[node name="Coin2" parent="Coins" unique_id=1139825559 instance=ExtResource("4_458el")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1.5, 0)
+
+[node name="Coin3" parent="Coins" unique_id=596058047 instance=ExtResource("4_458el")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 1.5, -3)
+
+[node name="Coin4" parent="Coins" unique_id=1754428667 instance=ExtResource("4_458el")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 1.5, 3)
+
+[node name="Coin5" parent="Coins" unique_id=984039269 instance=ExtResource("4_458el")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 3, -6.8)
+
+[node name="Coin6" parent="Coins" unique_id=2105630395 instance=ExtResource("4_458el")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 5.4, -14)
+
+[node name="Coin7" parent="Coins" unique_id=1773889516 instance=ExtResource("4_458el")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 5.1, -24.5)
+
+[node name="Coin8" parent="Coins" unique_id=1229088409 instance=ExtResource("4_458el")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 5.1, -29.5)
+
+[node name="Coin9" parent="Coins" unique_id=77404209 instance=ExtResource("4_458el")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 5.6, -38.6)
+
+[node name="Coin10" parent="Coins" unique_id=756254927 instance=ExtResource("4_458el")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4, 5.1, -36.4)
+
+[node name="Coin11" parent="Coins" unique_id=862935614 instance=ExtResource("4_458el")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 6.6, -50.4)
+
+[node name="Traps" type="Node3D" parent="." unique_id=40249792]
+
+[node name="FallingPlatform" parent="Traps" unique_id=309992109 instance=ExtResource("5_ok1eh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+
+[node name="FallingPlatform2" parent="Traps" unique_id=1912196222 instance=ExtResource("5_ok1eh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 0)
+
+[node name="FallingPlatform3" parent="Traps" unique_id=1744886332 instance=ExtResource("5_ok1eh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
+
+[node name="Spinner" parent="Traps" unique_id=691252237 instance=ExtResource("6_rl2o4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.5, 0)
+arm_length = 9.0
+speed_degrees = 95.0
+double_arm = true
+
+[node name="MovingPlatform" parent="Traps" unique_id=1673299823 instance=ExtResource("7_rsd5h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.5, -6.8)
+move_offset = Vector3(0, 3.6, 0)
+duration = 2.2
+
+[node name="SpikeTrap" parent="Traps" unique_id=384092944 instance=ExtResource("8_tbesk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 4.1, -22)
+size = Vector2(3.8, 2)
+up_time = 1.0
+
+[node name="SpikeTrap2" parent="Traps" unique_id=1747417362 instance=ExtResource("8_tbesk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 4.1, -27)
+size = Vector2(3.8, 2)
+up_time = 1.0
+time_offset = 0.6
+
+[node name="SpikeTrap3" parent="Traps" unique_id=1844867138 instance=ExtResource("8_tbesk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 4.1, -32)
+size = Vector2(3.8, 2)
+up_time = 1.0
+time_offset = 1.2
+
+[node name="MovingPlatform2" parent="Traps" unique_id=205684165 instance=ExtResource("7_rsd5h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 4.1, -38.6)
+move_offset = Vector3(-10, 0, 0)
+duration = 3.0
+
+[node name="Spinner2" parent="Traps" unique_id=591632990 instance=ExtResource("6_rl2o4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4.1, -38.6)
+arm_length = 7.0
+speed_degrees = -100.0
+
+[node name="FallingPlatform4" parent="Traps" unique_id=1418493748 instance=ExtResource("5_ok1eh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4.5, -46.1)
+
+[node name="FallingPlatform5" parent="Traps" unique_id=197948978 instance=ExtResource("5_ok1eh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 5, -50.4)
+
+[node name="FallingPlatform6" parent="Traps" unique_id=285514556 instance=ExtResource("5_ok1eh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 5.5, -54.4)
+
+[node name="Extras" type="Node3D" parent="." unique_id=402103626]
+
+[node name="Lantern" type="Node3D" parent="Extras" unique_id=524206072]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2.6)
+
+[node name="Post" type="MeshInstance3D" parent="Extras/Lantern" unique_id=1197167191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_pc3ex")
+mesh = SubResource("CylinderMesh_wl62r")
+
+[node name="Bulb" type="MeshInstance3D" parent="Extras/Lantern" unique_id=424716917]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+material_override = SubResource("StandardMaterial3D_laorw")
+mesh = SubResource("SphereMesh_plyu7")
+
+[node name="Light" type="OmniLight3D" parent="Extras/Lantern" unique_id=889188170]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+light_color = Color(1, 0.7, 0.35, 1)
+light_energy = 1.6
+
+[node name="Sign" type="Label3D" parent="Extras" unique_id=924611140]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2.8, -1.2)
+pixel_size = 0.008
+billboard = 1
+modulate = Color(1, 0.8, 0.5, 1)
+outline_modulate = Color(0.12, 0.08, 0.15, 1)
+text = "พื้นสีทรายจะถล่ม!
+รีบวิ่งผ่านไป →"
+font = ExtResource("9_gyiht")
+font_size = 36
+outline_size = 14
+
+[node name="Checkpoint" parent="Extras" unique_id=238152992 instance=ExtResource("10_4ljym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2, 0.5, 3.6)
+
+[node name="Lantern2" type="Node3D" parent="Extras" unique_id=138834950]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.2, 0.5, -4.2)
+
+[node name="Post" type="MeshInstance3D" parent="Extras/Lantern2" unique_id=802720805]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_l84e7")
+mesh = SubResource("CylinderMesh_m4te8")
+
+[node name="Bulb" type="MeshInstance3D" parent="Extras/Lantern2" unique_id=68719301]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+material_override = SubResource("StandardMaterial3D_7i2wu")
+mesh = SubResource("SphereMesh_2cl3l")
+
+[node name="Light" type="OmniLight3D" parent="Extras/Lantern2" unique_id=1918182163]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+light_color = Color(1, 0.7, 0.35, 1)
+light_energy = 1.6
+
+[node name="Sign2" type="Label3D" parent="Extras" unique_id=967795022]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 6.6, -12)
+pixel_size = 0.008
+billboard = 1
+modulate = Color(1, 0.85, 0.6, 1)
+outline_modulate = Color(0.12, 0.08, 0.15, 1)
+text = "ขึ้นลิฟต์ไม้ ↑"
+font = ExtResource("9_gyiht")
+font_size = 34
+outline_size = 14
+
+[node name="Lantern3" type="Node3D" parent="Extras" unique_id=1268352424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6, 4.1, -19.6)
+
+[node name="Post" type="MeshInstance3D" parent="Extras/Lantern3" unique_id=1150263285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_qq3dl")
+mesh = SubResource("CylinderMesh_hlgih")
+
+[node name="Bulb" type="MeshInstance3D" parent="Extras/Lantern3" unique_id=1619859898]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+material_override = SubResource("StandardMaterial3D_h1brv")
+mesh = SubResource("SphereMesh_mypd1")
+
+[node name="Light" type="OmniLight3D" parent="Extras/Lantern3" unique_id=427479490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+light_color = Color(1, 0.7, 0.35, 1)
+light_energy = 1.6
+
+[node name="Lantern4" type="Node3D" parent="Extras" unique_id=912772036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4, 4.1, -34.4)
+
+[node name="Post" type="MeshInstance3D" parent="Extras/Lantern4" unique_id=482408798]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_s6uab")
+mesh = SubResource("CylinderMesh_fqugr")
+
+[node name="Bulb" type="MeshInstance3D" parent="Extras/Lantern4" unique_id=1682874902]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+material_override = SubResource("StandardMaterial3D_bv0qk")
+mesh = SubResource("SphereMesh_pago5")
+
+[node name="Light" type="OmniLight3D" parent="Extras/Lantern4" unique_id=1102528645]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+light_color = Color(1, 0.7, 0.35, 1)
+light_energy = 1.6
+
+[node name="Checkpoint2" parent="Extras" unique_id=1828579371 instance=ExtResource("10_4ljym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4.1, -34.3)
+
+[node name="Door" parent="Extras" unique_id=105554894 instance=ExtResource("11_nwpaj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 6, -65)
+
+[node name="Lantern5" type="Node3D" parent="Extras" unique_id=716290152]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 6, -64)
+
+[node name="Post" type="MeshInstance3D" parent="Extras/Lantern5" unique_id=1677125395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_ifigw")
+mesh = SubResource("CylinderMesh_pe0d0")
+
+[node name="Bulb" type="MeshInstance3D" parent="Extras/Lantern5" unique_id=1621078289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+material_override = SubResource("StandardMaterial3D_yf0ma")
+mesh = SubResource("SphereMesh_vt7u7")
+
+[node name="Light" type="OmniLight3D" parent="Extras/Lantern5" unique_id=1240762034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+light_color = Color(1, 0.7, 0.35, 1)
+light_energy = 1.6
+
+[node name="Lantern6" type="Node3D" parent="Extras" unique_id=1567006453]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 6, -64)
+
+[node name="Post" type="MeshInstance3D" parent="Extras/Lantern6" unique_id=50172919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_c1qal")
+mesh = SubResource("CylinderMesh_6ll2v")
+
+[node name="Bulb" type="MeshInstance3D" parent="Extras/Lantern6" unique_id=142162476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+material_override = SubResource("StandardMaterial3D_si2ly")
+mesh = SubResource("SphereMesh_iydc0")
+
+[node name="Light" type="OmniLight3D" parent="Extras/Lantern6" unique_id=1416263484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+light_color = Color(1, 0.7, 0.35, 1)
+light_energy = 1.6
+
+[node name="Backdrop" type="Node3D" parent="." unique_id=160850932]
+
+[node name="Platform" parent="Backdrop" unique_id=49058918 instance=ExtResource("2_w5ayf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -3, -14)
+size = Vector3(14, 9.8, 14)
+style = "autumn"
+round_shape = true
+
+[node name="DeadTree_3" parent="Backdrop" unique_id=1954970245 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.40138277, 0, 0.53341824, 0, 0.6675651, 0, -0.53341824, 0, -0.40138277, -10.269514, -3, -10.919102)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_3"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_4" parent="Backdrop" unique_id=672735913 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.35342163, 0, 0.7011771, 0, 0.7852109, 0, -0.7011771, 0, -0.35342163, -15.683898, -3, -8.900139)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_3"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_2" parent="Backdrop" unique_id=384658432 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.37736034, 0, 0.5379246, 0, 0.65708727, 0, -0.5379246, 0, -0.37736034, -19.782724, -3, -12.998083)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_2"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_5" parent="Backdrop" unique_id=666454007 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.5477495, 0, 0.41757032, 0, 0.688763, 0, -0.41757032, 0, -0.5477495, -14.729228, -3, -8.4680195)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_3"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="MapleTree_2" parent="Backdrop" unique_id=697615411 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.11990348, 0, -0.42537296, 0, 0.4419491, 0, 0.42537296, 0, 0.11990348, -10.550507, -3, -9.762144)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_2"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="Plant_2" parent="Backdrop" unique_id=101763084 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.9167107, 0, -0.047639333, 0, 0.9179477, 0, 0.047639333, 0, -0.9167107, -15.686653, -3, -19.910654)
+source = "res://Assets/Models/Nature/FlowerBushes.glb"
+mesh_name = "Plant_2"
+
+[node name="Plant_3" parent="Backdrop" unique_id=779906351 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.9667176, 0, -0.36829787, 0, 1.0344981, 0, 0.36829787, 0, 0.9667176, -11.275382, -3, -11.533691)
+source = "res://Assets/Models/Nature/FlowerBushes.glb"
+mesh_name = "Plant_2"
+
+[node name="Flower_2_Clump" parent="Backdrop" unique_id=1476456330 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(1.655708, 0, 0.3978652, 0, 1.7028404, 0, -0.3978652, 0, 1.655708, -12.608404, -3, -10.200695)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_2_Clump"
+
+[node name="Plant_1" parent="Backdrop" unique_id=157650436 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.25845227, 0, -0.96263456, 0, 0.99672604, 0, 0.96263456, 0, 0.25845227, -13.049424, -3, -17.979977)
+source = "res://Assets/Models/Nature/Bushes.glb"
+mesh_name = "Plant_1"
+
+[node name="Rock_2" parent="Backdrop" unique_id=583636223 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.5084645, 0, 0.24904464, 0, 0.56617963, 0, -0.24904464, 0, -0.5084645, -19.011806, -3, -14.785755)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_2"
+
+[node name="Plant_4" parent="Backdrop" unique_id=133846252 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.22643614, 0, 0.7790273, 0, 0.8112687, 0, -0.7790273, 0, -0.22643614, -9.351571, -3, -17.333447)
+source = "res://Assets/Models/Nature/Bushes.glb"
+mesh_name = "Plant_1"
+
+[node name="DeadTree_6" parent="Backdrop" unique_id=1845714236 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.34396434, 0, 0.36001995, 0, 0.49792153, 0, -0.36001995, 0, -0.34396434, -12.123281, -3, -15.44722)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_5"
+
+[node name="Plant_5" parent="Backdrop" unique_id=247526201 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.88293606, 0, -0.16094944, 0, 0.8974858, 0, 0.16094944, 0, 0.88293606, -10.79257, -3, -10.553961)
+source = "res://Assets/Models/Nature/Bushes.glb"
+mesh_name = "Plant_1"
+
+[node name="DeadTree_7" parent="Backdrop" unique_id=160110139 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.41298696, 0, -0.4111491, 0, 0.58275366, 0, 0.4111491, 0, 0.41298696, -10.330593, -3, -12.218979)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_5"
+
+[node name="Rock_3" parent="Backdrop" unique_id=66155303 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.14672689, 0, -0.51379883, 0, 0.5343389, 0, 0.51379883, 0, 0.14672689, -10.84626, -3, -12.391391)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_2"
+
+[node name="Platform2" parent="Backdrop" unique_id=327556513 instance=ExtResource("2_w5ayf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, -2, -25)
+size = Vector3(16, 11.2, 16)
+style = "autumn"
+round_shape = true
+
+[node name="MapleTree_3" parent="Backdrop" unique_id=844700091 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.0688334, 0, -0.4441233, 0, 0.4494258, 0, 0.4441233, 0, -0.0688334, 38.258476, -2, -24.669537)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_2"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_8" parent="Backdrop" unique_id=124401596 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.5257478, 0, 0.44282392, 0, 0.6873891, 0, -0.44282392, 0, -0.5257478, 42.276516, -2, -30.97048)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_3"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_1" parent="Backdrop" unique_id=111833826 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.59133655, 0, -0.4032659, 0, 0.71575296, 0, 0.4032659, 0, 0.59133655, 50.50404, -2, -21.306732)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_1"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_9" parent="Backdrop" unique_id=327876074 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.433486, 0, 0.64884454, 0, 0.7803264, 0, -0.64884454, 0, -0.433486, 42.07463, -2, -19.765045)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_3"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_10" parent="Backdrop" unique_id=1054511839 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.7678115, 0, -0.07164741, 0, 0.7711471, 0, 0.07164741, 0, -0.7678115, 50.43049, -2, -24.2426)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_1"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="MapleTree_1" parent="Backdrop" unique_id=377938593 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.33727387, 0, 0.41896525, 0, 0.5378527, 0, -0.41896525, 0, 0.33727387, 43.39107, -2, -31.138264)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_1"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="Plant_6" parent="Backdrop" unique_id=843252568 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.6423051, 0, -0.70268273, 0, 0.95200783, 0, 0.70268273, 0, -0.6423051, 41.541786, -2, -27.19386)
+source = "res://Assets/Models/Nature/FlowerBushes.glb"
+mesh_name = "Plant_2"
+
+[node name="Flower_2_Clump2" parent="Backdrop" unique_id=1917985125 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-1.2832487, 0, -0.54216725, 0, 1.3930802, 0, 0.54216725, 0, -1.2832487, 42.483658, -2, -19.697277)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_2_Clump"
+
+[node name="Flower_2_Clump3" parent="Backdrop" unique_id=790572392 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-1.4919318, 0, -0.05488229, 0, 1.4929409, 0, 0.05488229, 0, -1.4919318, 40.704514, -2, -23.623896)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_2_Clump"
+
+[node name="Grass_Large_Extruded" parent="Backdrop" unique_id=1987579328 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-1.3706367, 0, 0.199127, 0, 1.3850259, 0, -0.199127, 0, -1.3706367, 49.41008, -2, -30.514091)
+source = "res://Assets/Models/Nature/Grass.glb"
+mesh_name = "Grass_Large_Extruded"
+
+[node name="Rock_4" parent="Backdrop" unique_id=1365135460 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.19599049, 0, -0.6816012, 0, 0.70921963, 0, 0.6816012, 0, 0.19599049, 46.645123, -2, -21.70825)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_2"
+
+[node name="Flower_2_Clump4" parent="Backdrop" unique_id=857820554 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(1.6619703, 0, 0.081752315, 0, 1.6639798, 0, -0.081752315, 0, 1.6619703, 47.396763, -2, -30.03755)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_2_Clump"
+
+[node name="Rock_1" parent="Backdrop" unique_id=1511425475 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.66464716, 0, 0.10638925, 0, 0.6731081, 0, -0.10638925, 0, -0.66464716, 45.42659, -2, -22.469782)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_1"
+
+[node name="Rock_5" parent="Backdrop" unique_id=2146515678 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.31638035, 0, -0.6374458, 0, 0.71164155, 0, 0.6374458, 0, -0.31638035, 41.02384, -2, -21.360107)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_2"
+
+[node name="Grass_Large_Extruded2" parent="Backdrop" unique_id=469502171 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-1.0007778, 0, -0.8724154, 0, 1.3276539, 0, 0.8724154, 0, -1.0007778, 52.059326, -2, -26.606865)
+source = "res://Assets/Models/Nature/Grass.glb"
+mesh_name = "Grass_Large_Extruded"
+
+[node name="Rock_6" parent="Backdrop" unique_id=1187494934 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.5400793, 0, 0.12474785, 0, 0.5542993, 0, -0.12474785, 0, 0.5400793, 47.305515, -2, -19.571274)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_1"
+
+[node name="Rock_7" parent="Backdrop" unique_id=2050093042 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.18855165, 0, 0.5289587, 0, 0.56155944, 0, -0.5289587, 0, 0.18855165, 45.6266, -2, -20.203985)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_2"
+
+[node name="Rock_8" parent="Backdrop" unique_id=1943555631 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.03312975, 0, -0.7050936, 0, 0.7058715, 0, 0.7050936, 0, 0.03312975, 41.4699, -2, -25.894548)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_2"
+
+[node name="Platform3" parent="Backdrop" unique_id=2071147420 instance=ExtResource("2_w5ayf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -52)
+size = Vector3(12, 8.4, 12)
+style = "moss"
+round_shape = true
+
+[node name="MapleTree_4" parent="Backdrop" unique_id=1716934755 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.24370445, 0, 0.43896294, 0, 0.502076, 0, -0.43896294, 0, -0.24370445, -10.576923, 0, -54.06691)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_1"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_11" parent="Backdrop" unique_id=703069873 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.042630084, 0, -0.6921036, 0, 0.6934153, 0, 0.6921036, 0, -0.042630084, -1.1654434, 0, -52.21103)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_3"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="MapleTree_5" parent="Backdrop" unique_id=800933576 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.542012, 0, 0.5316716, 0, 0.75924414, 0, -0.5316716, 0, 0.542012, -8.743356, 0, -48.30787)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_4"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="MapleTree_6" parent="Backdrop" unique_id=199788634 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.46541792, 0, -0.8573062, 0, 0.97549355, 0, 0.8573062, 0, 0.46541792, -3.136264, 0, -55.105675)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_4"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_12" parent="Backdrop" unique_id=1445942901 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.6454872, 0, 0.23097059, 0, 0.6855663, 0, -0.23097059, 0, 0.6454872, -9.169399, 0, -50.64593)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_5"
+
+[node name="Grass_Small" parent="Backdrop" unique_id=330641998 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.853026, 0, -0.9991397, 0, 1.3137479, 0, 0.9991397, 0, 0.853026, -4.0327406, 0, -52.21044)
+source = "res://Assets/Models/Nature/Grass.glb"
+mesh_name = "Grass_Small"
+
+[node name="Plant_7" parent="Backdrop" unique_id=87523473 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.93020415, 0, 0.0017386598, 0, 0.93020576, 0, -0.0017386598, 0, -0.93020415, -1.7653804, 0, -48.553543)
+source = "res://Assets/Models/Nature/FlowerBushes.glb"
+mesh_name = "Plant_2"
+
+[node name="Plant_8" parent="Backdrop" unique_id=880245046 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.9718774, 0, -0.23565993, 0, 1.0000407, 0, 0.23565993, 0, -0.9718774, -5.325425, 0, -48.186802)
+source = "res://Assets/Models/Nature/Bushes.glb"
+mesh_name = "Plant_1"
+
+[node name="Grass_Small2" parent="Backdrop" unique_id=2001865667 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-1.7547214, 0, 0.052106183, 0, 1.7554948, 0, -0.052106183, 0, -1.7547214, -0.5840483, 0, -51.04771)
+source = "res://Assets/Models/Nature/Grass.glb"
+mesh_name = "Grass_Small"
+
+[node name="Grass_Small3" parent="Backdrop" unique_id=1402190420 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(1.4578732, 0, -0.17036706, 0, 1.4677941, 0, 0.17036706, 0, 1.4578732, -3.0249674, 0, -54.407368)
+source = "res://Assets/Models/Nature/Grass.glb"
+mesh_name = "Grass_Small"
+
+[node name="Plant_9" parent="Backdrop" unique_id=303434678 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.5127857, 0, -0.6322057, 0, 0.81402284, 0, 0.6322057, 0, 0.5127857, -3.922241, 0, -48.92835)
+source = "res://Assets/Models/Nature/FlowerBushes.glb"
+mesh_name = "Plant_2"
+
+[node name="DeadTree_13" parent="Backdrop" unique_id=1221784564 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.63632435, 0, 0.014890824, 0, 0.6364986, 0, -0.014890824, 0, 0.63632435, -4.409034, 0, -50.67628)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_5"
+
+[node name="Platform4" parent="Backdrop" unique_id=562066780 instance=ExtResource("2_w5ayf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1, -70)
+size = Vector3(14, 9.8, 14)
+style = "autumn"
+round_shape = true
+
+[node name="MapleTree_7" parent="Backdrop" unique_id=1863881887 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.3340035, 0, 0.37265718, 0, 0.50043154, 0, -0.37265718, 0, -0.3340035, 42.104465, 1, -64.9904)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_1"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_14" parent="Backdrop" unique_id=725323112 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.15490833, 0, 0.60491496, 0, 0.6244347, 0, -0.60491496, 0, 0.15490833, 45.159607, 1, -67.180084)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_1"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="MapleTree_8" parent="Backdrop" unique_id=1360239115 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.681217, 0, 0.68003696, 0, 0.9625523, 0, -0.68003696, 0, -0.681217, 42.54576, 1, -65.73194)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_4"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_15" parent="Backdrop" unique_id=2136875773 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.5369717, 0, 0.571066, 0, 0.78387177, 0, -0.571066, 0, -0.5369717, 45.159966, 1, -70.896774)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_2"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_16" parent="Backdrop" unique_id=556931482 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.6452015, 0, -0.10109197, 0, 0.65307313, 0, 0.10109197, 0, -0.6452015, 35.91715, 1, -72.80269)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_1"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_17" parent="Backdrop" unique_id=1074339542 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.063241415, 0, -0.55295825, 0, 0.55656296, 0, 0.55295825, 0, 0.063241415, 39.4037, 1, -73.13379)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_5"
+
+[node name="Flower_2_Clump5" parent="Backdrop" unique_id=1728341358 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-1.1873281, 0, -0.48607898, 0, 1.2829734, 0, 0.48607898, 0, -1.1873281, 36.96213, 1, -69.43098)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_2_Clump"
+
+[node name="Grass_Small4" parent="Backdrop" unique_id=839356563 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(1.1713979, 0, 0.987908, 0, 1.5323627, 0, -0.987908, 0, 1.1713979, 45.332752, 1, -68.85205)
+source = "res://Assets/Models/Nature/Grass.glb"
+mesh_name = "Grass_Small"
+
+[node name="Grass_Large_Extruded3" parent="Backdrop" unique_id=1926011258 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(1.0197681, 0, 0.892816, 0, 1.3553773, 0, -0.892816, 0, 1.0197681, 38.830994, 1, -67.7585)
+source = "res://Assets/Models/Nature/Grass.glb"
+mesh_name = "Grass_Large_Extruded"
+
+[node name="Plant_10" parent="Backdrop" unique_id=826564567 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.61530954, 0, 0.76362336, 0, 0.98067653, 0, -0.76362336, 0, -0.61530954, 35.95758, 1, -66.536995)
+source = "res://Assets/Models/Nature/FlowerBushes.glb"
+mesh_name = "Plant_2"
+
+[node name="Grass_Large_Extruded4" parent="Backdrop" unique_id=1065588633 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-1.1738122, 0, 0.48797455, 0, 1.2712018, 0, -0.48797455, 0, -1.1738122, 45.247917, 1, -71.43692)
+source = "res://Assets/Models/Nature/Grass.glb"
+mesh_name = "Grass_Large_Extruded"
+
+[node name="Plant_11" parent="Backdrop" unique_id=1845374818 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.6146117, 0, -0.72893775, 0, 0.9534662, 0, 0.72893775, 0, 0.6146117, 38.526367, 1, -67.800095)
+source = "res://Assets/Models/Nature/FlowerBushes.glb"
+mesh_name = "Plant_2"
+
+[node name="Plant_12" parent="Backdrop" unique_id=353958767 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.7837677, 0, 0.566934, 0, 0.96731895, 0, -0.566934, 0, 0.7837677, 41.92149, 1, -66.25833)
+source = "res://Assets/Models/Nature/Bushes.glb"
+mesh_name = "Plant_1"
+
+[node name="Rock_9" parent="Backdrop" unique_id=2132324643 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.41410643, 0, 0.30573523, 0, 0.5147409, 0, -0.30573523, 0, -0.41410643, 37.48769, 1, -72.49467)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_2"
+
+[node name="Flower_2_Clump6" parent="Backdrop" unique_id=325222455 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.6454343, 0, -1.5025781, 0, 1.6353368, 0, 1.5025781, 0, 0.6454343, 39.291058, 1, -63.769276)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_2_Clump"
+
+[node name="Platform5" parent="Backdrop" unique_id=1507181597 instance=ExtResource("2_w5ayf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -6, 18)
+size = Vector3(12, 8.4, 12)
+style = "moss"
+round_shape = true
+
+[node name="DeadTree_18" parent="Backdrop" unique_id=1588724081 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.47434875, 0, 0.3832083, 0, 0.60979944, 0, -0.3832083, 0, -0.47434875, 10.458353, -6, 21.980316)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_3"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="MapleTree_9" parent="Backdrop" unique_id=410763176 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.7836449, 0, 0.12700965, 0, 0.79387075, 0, -0.12700965, 0, -0.7836449, 15.861355, -6, 21.005146)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_4"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_19" parent="Backdrop" unique_id=894659353 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.6139526, 0, -0.39818802, 0, 0.73177284, 0, 0.39818802, 0, -0.6139526, 14.741087, -6, 22.32611)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_2"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_20" parent="Backdrop" unique_id=2124450180 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.6383905, 0, 0.04495076, 0, 0.6399711, 0, -0.04495076, 0, 0.6383905, 16.18634, -6, 19.679565)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_2"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="Plant_13" parent="Backdrop" unique_id=2139940487 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.52335435, 0, -0.77924734, 0, 0.9386833, 0, 0.77924734, 0, 0.52335435, 7.8081193, -6, 19.771664)
+source = "res://Assets/Models/Nature/Bushes.glb"
+mesh_name = "Plant_1"
+
+[node name="Rock_10" parent="Backdrop" unique_id=1644892801 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(0.46404612, 0, -0.1857111, 0, 0.49982738, 0, 0.1857111, 0, 0.46404612, 7.926191, -6, 18.552235)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_2"
+
+[node name="DeadTree_21" parent="Backdrop" unique_id=1722034660 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.49560633, 0, 0.14943403, 0, 0.5176448, 0, -0.14943403, 0, -0.49560633, 8.336911, -6, 15.967251)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_5"
+
+[node name="Flower_2_Clump7" parent="Backdrop" unique_id=1138537847 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.03178206, 0, -1.5395828, 0, 1.5399109, 0, 1.5395828, 0, -0.03178206, 11.609771, -6, 21.535278)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_2_Clump"
+
+[node name="Flower_2_Clump8" parent="Backdrop" unique_id=1161839485 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-1.0443004, 0, -1.0354384, 0, 1.4706109, 0, 1.0354384, 0, -1.0443004, 12.008362, -6, 13.93401)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_2_Clump"
+
+[node name="Plant_14" parent="Backdrop" unique_id=783600135 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.7298205, 0, -0.6128533, 0, 0.9530095, 0, 0.6128533, 0, -0.7298205, 10.437898, -6, 19.565838)
+source = "res://Assets/Models/Nature/FlowerBushes.glb"
+mesh_name = "Plant_2"
+
+[node name="Flower_2_Clump9" parent="Backdrop" unique_id=848433859 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-1.5129956, 0, 0.67427385, 0, 1.6564422, 0, -0.67427385, 0, -1.5129956, 9.523866, -6, 18.645435)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_2_Clump"
+
+[node name="Plant_15" parent="Backdrop" unique_id=31607096 instance=ExtResource("3_ya3ly")]
+transform = Transform3D(-0.60608, 0, -0.5949033, 0, 0.8492602, 0, 0.5949033, 0, -0.60608, 11.367231, -6, 22.496506)
+source = "res://Assets/Models/Nature/Bushes.glb"
+mesh_name = "Plant_1"
+
+[node name="Cloud" type="MeshInstance3D" parent="Backdrop" unique_id=1561490477]
+transform = Transform3D(4.2492847, 0, 5.3718386, 0, 6.849312, 0, -5.3718386, 0, 4.2492847, 70.72147, 2.7053003, -27.397888)
+material_override = SubResource("StandardMaterial3D_gniti")
+cast_shadow = 0
+mesh = ExtResource("12_yanqf")
+
+[node name="Cloud2" type="MeshInstance3D" parent="Backdrop" unique_id=1574312503]
+transform = Transform3D(-6.2180943, 0, 2.0100443, 0, 6.5349045, 0, -2.0100443, 0, -6.2180943, -28.651379, -6.111544, -32.371468)
+material_override = SubResource("StandardMaterial3D_gniti")
+cast_shadow = 0
+mesh = ExtResource("12_yanqf")
+
+[node name="Cloud3" type="MeshInstance3D" parent="Backdrop" unique_id=1176861794]
+transform = Transform3D(-3.03684, 0, 2.6776588, 0, 4.0487347, 0, -2.6776588, 0, -3.03684, -42.93876, -4.4886475, -44.649227)
+material_override = SubResource("StandardMaterial3D_gniti")
+cast_shadow = 0
+mesh = ExtResource("12_yanqf")
+
+[node name="Cloud4" type="MeshInstance3D" parent="Backdrop" unique_id=1410616768]
+transform = Transform3D(1.2591771, 0, 3.2159886, 0, 3.4537096, 0, -3.2159886, 0, 1.2591771, -4.9817657, -4.3714952, -78.11199)
+material_override = SubResource("StandardMaterial3D_gniti")
+cast_shadow = 0
+mesh = ExtResource("12_yanqf")
+
+[node name="Cloud5" type="MeshInstance3D" parent="Backdrop" unique_id=1878892932]
+transform = Transform3D(-2.0666046, 0, 4.1367874, 0, 4.624269, 0, -4.1367874, 0, -2.0666046, 29.542725, -7.8349752, -1.7273407)
+material_override = SubResource("StandardMaterial3D_gniti")
+cast_shadow = 0
+mesh = ExtResource("12_yanqf")
+
+[node name="Cloud6" type="MeshInstance3D" parent="Backdrop" unique_id=1098775183]
+transform = Transform3D(-5.3334236, 0, 3.429989, 0, 6.341154, 0, -3.429989, 0, -5.3334236, -16.961624, 10.134384, 19.658936)
+material_override = SubResource("StandardMaterial3D_gniti")
+cast_shadow = 0
+mesh = ExtResource("12_yanqf")
+
+[node name="Cloud7" type="MeshInstance3D" parent="Backdrop" unique_id=531393992]
+transform = Transform3D(3.141624, 0, 0.17273925, 0, 3.1463692, 0, -0.17273925, 0, 3.141624, -12.530197, 5.957098, -41.74545)
+material_override = SubResource("StandardMaterial3D_gniti")
+cast_shadow = 0
+mesh = ExtResource("12_yanqf")
+
+[node name="Cloud8" type="MeshInstance3D" parent="Backdrop" unique_id=315427706]
+transform = Transform3D(-2.8895078, 0, -1.4544084, 0, 3.2348971, 0, 1.4544084, 0, -2.8895078, 53.99415, 14.632204, -82.757454)
+material_override = SubResource("StandardMaterial3D_gniti")
+cast_shadow = 0
+mesh = ExtResource("12_yanqf")
+
+[node name="Cloud9" type="MeshInstance3D" parent="Backdrop" unique_id=219024422]
+transform = Transform3D(-4.4758525, 0, -1.9610742, 0, 4.8866215, 0, 1.9610742, 0, -4.4758525, 1.1032677, -1.088295, 25.937683)
+material_override = SubResource("StandardMaterial3D_gniti")
+cast_shadow = 0
+mesh = ExtResource("12_yanqf")
+
+[node name="Cloud10" type="MeshInstance3D" parent="Backdrop" unique_id=1818714121]
+transform = Transform3D(3.06524, 0, 2.5477388, 0, 3.9858084, 0, -2.5477388, 0, 3.06524, 20.993553, -1.7202072, -99.52356)
+material_override = SubResource("StandardMaterial3D_gniti")
+cast_shadow = 0
+mesh = ExtResource("12_yanqf")
+
+[node name="Cloud11" type="MeshInstance3D" parent="Backdrop" unique_id=1140414447]
+transform = Transform3D(5.020488, 0, -0.71370727, 0, 5.070964, 0, 0.71370727, 0, 5.020488, 75.96718, 13.99645, -92.633804)
+material_override = SubResource("StandardMaterial3D_gniti")
+cast_shadow = 0
+mesh = ExtResource("12_yanqf")
+
+[node name="Cloud12" type="MeshInstance3D" parent="Backdrop" unique_id=700824899]
+transform = Transform3D(2.3084948, 0, 3.0836904, 0, 3.8520508, 0, -3.0836904, 0, 2.3084948, -47.784332, 0.28795338, -9.008377)
+material_override = SubResource("StandardMaterial3D_gniti")
+cast_shadow = 0
+mesh = ExtResource("12_yanqf")
+
+[node name="Cloud13" type="MeshInstance3D" parent="Backdrop" unique_id=572005833]
+transform = Transform3D(6.3359785, 0, 1.4751773, 0, 6.5054417, 0, -1.4751773, 0, 6.3359785, 3.6850395, 11.204845, -95.41681)
+material_override = SubResource("StandardMaterial3D_gniti")
+cast_shadow = 0
+mesh = ExtResource("12_yanqf")
+
+[node name="Cloud14" type="MeshInstance3D" parent="Backdrop" unique_id=2005724903]
+transform = Transform3D(6.051762, 0, -1.2632929, 0, 6.182211, 0, 1.2632929, 0, 6.051762, -27.895279, 9.660984, -69.01638)
+material_override = SubResource("StandardMaterial3D_gniti")
+cast_shadow = 0
+mesh = ExtResource("12_yanqf")
+
+[node name="Player" parent="." unique_id=1139432381 instance=ExtResource("13_m2631")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2.5)
+
+[node name="DeadZone" parent="." unique_id=1480313784 instance=ExtResource("14_uk4s3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14, 0)
+
+[node name="HUD" parent="." unique_id=340258483 instance=ExtResource("15_ihite")]

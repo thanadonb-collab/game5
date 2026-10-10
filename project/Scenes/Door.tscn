@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/Door.gd" id="1_38ogf"]
+
+[node name="Door" type="Node3D" unique_id=105554894]
+script = ExtResource("1_38ogf")

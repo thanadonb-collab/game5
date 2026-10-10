@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/Traps/Spinner.gd" id="1_xfnw4"]
+
+[node name="Spinner" type="Node3D" unique_id=691252237]
+script = ExtResource("1_xfnw4")

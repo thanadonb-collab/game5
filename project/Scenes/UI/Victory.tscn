@@ -1,0 +1,511 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_5vo0r"]
+[ext_resource type="PackedScene" path="res://Scenes/Platform.tscn" id="2_j8jk0"]
+[ext_resource type="PackedScene" path="res://Scenes/NatureProp.tscn" id="3_tsk0s"]
+[ext_resource type="PackedScene" path="res://Scenes/Coin.tscn" id="4_dc284"]
+[ext_resource type="ArrayMesh" path="res://Assets/Resources/cloud.res" id="5_sh2an"]
+[ext_resource type="PackedScene" path="res://Assets/Models/Adventurer/Adventurer.glb" id="6_vxxyd"]
+[ext_resource type="AnimationLibrary" path="res://Assets/Models/Adventurer/AdventurerAnims.tres" id="7_a61uc"]
+[ext_resource type="FontVariation" path="res://Assets/Fonts/GameFont.tres" id="8_86cbq"]
+[ext_resource type="FontVariation" path="res://Assets/Fonts/BodyFont.tres" id="9_tw72b"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qs2ja"]
+sky_top_color = Color(0.22, 0.16, 0.42, 1)
+sky_horizon_color = Color(1, 0.6, 0.4, 1)
+ground_bottom_color = Color(0.15, 0.1, 0.2, 1)
+ground_horizon_color = Color(1, 0.6, 0.4, 1)
+sun_angle_max = 20.0
+
+[sub_resource type="Sky" id="Sky_rs6gy"]
+sky_material = SubResource("ProceduralSkyMaterial_qs2ja")
+
+[sub_resource type="Environment" id="Environment_jbbd3"]
+background_mode = 2
+sky = SubResource("Sky_rs6gy")
+ambient_light_source = 3
+ambient_light_energy = 0.55
+tonemap_mode = 2
+tonemap_exposure = 0.9
+glow_enabled = true
+glow_intensity = 0.35
+fog_enabled = true
+fog_light_color = Color(0.8, 0.5, 0.5, 1)
+fog_sky_affect = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5l88"]
+albedo_color = Color(0.25, 0.15, 0.35, 1)
+roughness = 0.45
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mxeui"]
+size = Vector2(800, 800)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_waq7s"]
+shading_mode = 0
+
+[node name="Victory" type="Node3D" unique_id=449742150]
+script = ExtResource("1_5vo0r")
+victory_screen = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1559250251]
+environment = SubResource("Environment_jbbd3")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=437631494]
+transform = Transform3D(0.76604444, -0.2198463, 0.60402274, 0, 0.9396926, 0.34202012, -0.6427876, -0.26200262, 0.7198463, 0, 0, 0)
+light_color = Color(1, 0.7, 0.45, 1)
+shadow_enabled = true
+directional_shadow_max_distance = 70.0
+
+[node name="Water" type="MeshInstance3D" parent="." unique_id=1815954199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+material_override = SubResource("StandardMaterial3D_i5l88")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_mxeui")
+
+[node name="World" type="Node3D" parent="." unique_id=1340853374]
+
+[node name="Platform" parent="World" unique_id=711754754 instance=ExtResource("2_j8jk0")]
+size = Vector3(14, 4, 14)
+style = "autumn"
+round_shape = true
+
+[node name="DeadTree_2" parent="World" unique_id=1713222164 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.64265, 0, -0.29211473, 0, 0.705925, 0, 0.29211473, 0, 0.64265, 5.6716537, 0, -1.7974658)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_2"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="MapleTree_4" parent="World" unique_id=1422717600 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(-0.5314755, 0, -0.5384905, 0, 0.75659645, 0, 0.5384905, 0, -0.5314755, 0.03786422, 0, -5.0698166)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_4"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_3" parent="World" unique_id=113679375 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.59911543, 0, -0.2335592, 0, 0.64303124, 0, 0.2335592, 0, 0.59911543, -0.13990648, 0, -4.924117)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_2"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="MapleTree_1" parent="World" unique_id=566955750 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.08802299, 0, -0.5133158, 0, 0.52080816, 0, 0.5133158, 0, 0.08802299, 4.4661865, 0, -3.9665656)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_1"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="MapleTree_5" parent="World" unique_id=1831689045 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.67537314, 0, -0.4308566, 0, 0.8011032, 0, 0.4308566, 0, 0.67537314, -1.6198987, 0, -5.0118337)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_4"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="MapleTree_6" parent="World" unique_id=634115432 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(-0.6222463, 0, 0.78160596, 0, 0.99904877, 0, -0.78160596, 0, -0.6222463, -3.7236094, 0, -4.1006756)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_4"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="Flower_1_Clump" parent="World" unique_id=1997291198 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(1.1726043, 0, -1.1473613, 0, 1.6405605, 0, 1.1473613, 0, 1.1726043, 3.135133, 0, 2.291863)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_1_Clump"
+
+[node name="Flower_3_Clump" parent="World" unique_id=666872901 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(1.0060022, 0, 1.4828483, 0, 1.7918926, 0, -1.4828483, 0, 1.0060022, 0.13781123, 0, -5.5994473)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_3_Clump"
+
+[node name="Grass_Large_Extruded" parent="World" unique_id=242473074 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.7312939, 0, 0.9702528, 0, 1.214982, 0, -0.9702528, 0, 0.7312939, -4.1002436, 0, 2.234855)
+source = "res://Assets/Models/Nature/Grass.glb"
+mesh_name = "Grass_Large_Extruded"
+
+[node name="Grass_Large_Extruded2" parent="World" unique_id=463622736 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.06430919, 0, -1.3715389, 0, 1.3730457, 0, 1.3715389, 0, 0.06430919, -1.9861476, 0, -5.4857173)
+source = "res://Assets/Models/Nature/Grass.glb"
+mesh_name = "Grass_Large_Extruded"
+
+[node name="Flower_1_Clump2" parent="World" unique_id=225262238 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(-0.48902944, 0, 1.6532689, 0, 1.7240789, 0, -1.6532689, 0, -0.48902944, -1.0034425, 0, -4.9411683)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_1_Clump"
+
+[node name="Flower_3_Clump2" parent="World" unique_id=2005463848 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(1.468092, 0, 0.5066069, 0, 1.5530436, 0, -0.5066069, 0, 1.468092, -5.1015673, 0, -2.8527353)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_3_Clump"
+
+[node name="Rock_2" parent="World" unique_id=59327690 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.096530706, 0, -0.5894259, 0, 0.59727806, 0, 0.5894259, 0, 0.096530706, 1.6419938, 0, 2.6086073)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_2"
+
+[node name="Flower_1_Clump3" parent="World" unique_id=427508213 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(1.0628164, 0, 1.1183374, 0, 1.5428083, 0, -1.1183374, 0, 1.0628164, 3.9319234, 0, -3.0511363)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_1_Clump"
+
+[node name="Flower_3_Clump3" parent="World" unique_id=1067895440 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(1.1644168, 0, -0.90527314, 0, 1.474919, 0, 0.90527314, 0, 1.1644168, -3.3703318, 0, 4.0678573)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_3_Clump"
+
+[node name="Flower_1_Clump4" parent="World" unique_id=533319024 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(-0.82940304, 0, -1.5779315, 0, 1.7826321, 0, 1.5779315, 0, -0.82940304, 5.0892086, 0, -2.076982)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_1_Clump"
+
+[node name="Flower_3_Clump4" parent="World" unique_id=447870832 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(-0.8495798, 0, 1.3371934, 0, 1.5842575, 0, -1.3371934, 0, -0.8495798, 4.2832317, 0, 3.7232685)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_3_Clump"
+
+[node name="Flower_1_Clump5" parent="World" unique_id=269403707 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.7300873, 0, -1.3997483, 0, 1.5787092, 0, 1.3997483, 0, 0.7300873, 2.9778113, 0, 2.0138466)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_1_Clump"
+
+[node name="Flower_3_Clump5" parent="World" unique_id=1124587623 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(-1.3278612, 0, 1.301676, 0, 1.8594558, 0, -1.301676, 0, -1.3278612, 2.1639426, 0, -0.5010527)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_3_Clump"
+
+[node name="Flower_3_Clump6" parent="World" unique_id=630416816 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(1.7931426, 0, 0.62884444, 0, 1.900212, 0, -0.62884444, 0, 1.7931426, -2.9258838, 0, -1.9559625)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_3_Clump"
+
+[node name="Coin" parent="World" unique_id=1162905343 instance=ExtResource("4_dc284")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.6, -3.7)
+
+[node name="Coin2" parent="World" unique_id=117980411 instance=ExtResource("4_dc284")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.8524413, -3.1)
+
+[node name="Coin3" parent="World" unique_id=1110031103 instance=ExtResource("4_dc284")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8727893, -2.5)
+
+[node name="Coin4" parent="World" unique_id=355307520 instance=ExtResource("4_dc284")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.642336, -3.1)
+
+[node name="Coin5" parent="World" unique_id=593876347 instance=ExtResource("4_dc284")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.3729593, -3.7)
+
+[node name="Platform2" parent="World" unique_id=709006389 instance=ExtResource("2_j8jk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -3, -18)
+size = Vector3(12, 8.4, 12)
+style = "autumn"
+round_shape = true
+
+[node name="MapleTree_2" parent="World" unique_id=783228139 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.3089686, 0, 0.29708442, 0, 0.4286266, 0, -0.29708442, 0, 0.3089686, -24.21966, -3, -16.1668)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_1"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="MapleTree_7" parent="World" unique_id=1348135164 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(-0.5289216, 0, -0.71314853, 0, 0.8878845, 0, 0.71314853, 0, -0.5289216, -18.412472, -3, -13.337651)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_4"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="MapleTree_3" parent="World" unique_id=723703836 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(-0.43098387, 0, 0.032764297, 0, 0.4322275, 0, -0.032764297, 0, -0.43098387, -18.030046, -3, -14.33346)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_1"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_4" parent="World" unique_id=1588743444 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.5806526, 0, 0.48348287, 0, 0.75558794, 0, -0.48348287, 0, 0.5806526, -20.497913, -3, -13.508181)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_2"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="Flower_1_Clump6" parent="World" unique_id=1719421060 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(-1.5332699, 0, -0.19215356, 0, 1.5452636, 0, 0.19215356, 0, -1.5332699, -20.974976, -3, -22.076242)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_1_Clump"
+
+[node name="Grass_Large_Extruded3" parent="World" unique_id=1361295781 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(-0.5949267, 0, 1.1070904, 0, 1.2568161, 0, -1.1070904, 0, -0.5949267, -20.816866, -3, -14.45394)
+source = "res://Assets/Models/Nature/Grass.glb"
+mesh_name = "Grass_Large_Extruded"
+
+[node name="Bush_Flowers" parent="World" unique_id=1236958495 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.49514207, 0, 0.7781443, 0, 0.92232, 0, -0.7781443, 0, 0.49514207, -18.125591, -3, -15.650522)
+source = "res://Assets/Models/Nature/Bushes.glb"
+mesh_name = "Bush_Flowers"
+
+[node name="Bush_Flowers2" parent="World" unique_id=1175733760 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.34119332, 0, 0.72718036, 0, 0.803246, 0, -0.72718036, 0, 0.34119332, -21.240877, -3, -20.516123)
+source = "res://Assets/Models/Nature/Bushes.glb"
+mesh_name = "Bush_Flowers"
+
+[node name="Bush_Flowers3" parent="World" unique_id=168461413 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.6334277, 0, 0.27277052, 0, 0.6896625, 0, -0.27277052, 0, 0.6334277, -20.18629, -3, -14.389988)
+source = "res://Assets/Models/Nature/Bushes.glb"
+mesh_name = "Bush_Flowers"
+
+[node name="Rock_3" parent="World" unique_id=169710393 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.5422904, 0, 0.37952104, 0, 0.6619026, 0, -0.37952104, 0, 0.5422904, -17.925673, -3, -22.31565)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_2"
+
+[node name="Flower_1_Clump7" parent="World" unique_id=288250988 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(-1.1561476, 0, -0.80911654, 0, 1.4111509, 0, 0.80911654, 0, -1.1561476, -16.228964, -3, -20.665157)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_1_Clump"
+
+[node name="Bush_Flowers4" parent="World" unique_id=1026616173 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.6439841, 0, 0.50006574, 0, 0.8153412, 0, -0.50006574, 0, 0.6439841, -21.763027, -3, -23.071724)
+source = "res://Assets/Models/Nature/Bushes.glb"
+mesh_name = "Bush_Flowers"
+
+[node name="Platform3" parent="World" unique_id=354822117 instance=ExtResource("2_j8jk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, -2, -12)
+size = Vector3(14, 9.8, 14)
+style = "autumn"
+round_shape = true
+
+[node name="MapleTree_8" parent="World" unique_id=64648429 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(-0.47802863, 0, -0.14891246, 0, 0.5006858, 0, 0.14891246, 0, -0.47802863, 20.226908, -2, -7.283276)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_1"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="MapleTree_9" parent="World" unique_id=1715380935 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.4255232, 0, -0.03177797, 0, 0.42670813, 0, 0.03177797, 0, 0.4255232, 26.545055, -2, -15.824423)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_1"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_5" parent="World" unique_id=250549340 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.09399547, 0, -0.74623656, 0, 0.7521331, 0, 0.74623656, 0, 0.09399547, 25.959455, -2, -7.699532)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_2"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="DeadTree_6" parent="World" unique_id=912713695 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(-0.59680027, 0, 0.07967477, 0, 0.6020952, 0, -0.07967477, 0, -0.59680027, 27.228203, -2, -11.852341)
+source = "res://Assets/Models/Nature/DeadTrees.glb"
+mesh_name = "DeadTree_2"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="MapleTree_10" parent="World" unique_id=2134543586 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.27022818, 0, 0.43325955, 0, 0.51062423, 0, -0.43325955, 0, 0.27022818, 26.059256, -2, -15.386238)
+source = "res://Assets/Models/Nature/MapleTrees.glb"
+mesh_name = "MapleTree_1"
+collision_radius = 0.35
+collision_height = 4.0
+
+[node name="Rock_4" parent="World" unique_id=853710859 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(-0.050562363, 0, -0.63644516, 0, 0.63845044, 0, 0.63644516, 0, -0.050562363, 23.018703, -2, -17.827126)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_2"
+
+[node name="Flower_3_Clump7" parent="World" unique_id=1758977181 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(-1.065226, 0, -1.0466743, 0, 1.4933965, 0, 1.0466743, 0, -1.065226, 19.770168, -2, -11.881302)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_3_Clump"
+
+[node name="Bush_Flowers5" parent="World" unique_id=860065791 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.30793637, 0, 0.6264246, 0, 0.6980205, 0, -0.6264246, 0, 0.30793637, 18.103989, -2, -12.512013)
+source = "res://Assets/Models/Nature/Bushes.glb"
+mesh_name = "Bush_Flowers"
+
+[node name="Bush_Flowers6" parent="World" unique_id=1180787926 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(-0.5521785, 0, -0.42472035, 0, 0.6966265, 0, 0.42472035, 0, -0.5521785, 18.821442, -2, -16.669933)
+source = "res://Assets/Models/Nature/Bushes.glb"
+mesh_name = "Bush_Flowers"
+
+[node name="Flower_3_Clump8" parent="World" unique_id=2015266407 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.2505995, 0, -1.4730678, 0, 1.4942318, 0, 1.4730678, 0, 0.2505995, 20.528885, -2, -9.09138)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_3_Clump"
+
+[node name="Flower_1_Clump8" parent="World" unique_id=203589990 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(1.6612674, 0, -0.6619748, 0, 1.7883009, 0, 0.6619748, 0, 1.6612674, 19.575262, -2, -9.110504)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_1_Clump"
+
+[node name="Flower_3_Clump9" parent="World" unique_id=443853888 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(-1.212609, 0, -1.3786651, 0, 1.8360659, 0, 1.3786651, 0, -1.212609, 17.345884, -2, -8.228399)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_3_Clump"
+
+[node name="Rock_5" parent="World" unique_id=1004965684 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.12932372, 0, 0.67422533, 0, 0.6865161, 0, -0.67422533, 0, 0.12932372, 21.115719, -2, -17.61382)
+source = "res://Assets/Models/Nature/Rocks.glb"
+mesh_name = "Rock_2"
+
+[node name="Flower_1_Clump9" parent="World" unique_id=1086871923 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(0.43929744, 0, 1.830603, 0, 1.8825753, 0, -1.830603, 0, 0.43929744, 17.345201, -2, -15.919482)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_1_Clump"
+
+[node name="Flower_1_Clump10" parent="World" unique_id=297513949 instance=ExtResource("3_tsk0s")]
+transform = Transform3D(-1.7395474, 0, 0.428906, 0, 1.7916431, 0, -0.428906, 0, -1.7395474, 21.041128, -2, -9.606289)
+source = "res://Assets/Models/Nature/Flowers.glb"
+mesh_name = "Flower_1_Clump"
+
+[node name="Cloud" type="MeshInstance3D" parent="World" unique_id=108057959]
+transform = Transform3D(-5.123167, 0, -3.0389526, 0, 5.956683, 0, 3.0389526, 0, -5.123167, -4.069065, 0.043304443, -33.83765)
+material_override = SubResource("StandardMaterial3D_waq7s")
+cast_shadow = 0
+mesh = ExtResource("5_sh2an")
+
+[node name="Cloud2" type="MeshInstance3D" parent="World" unique_id=1770440848]
+transform = Transform3D(-0.74570835, 0, -5.277897, 0, 5.3303165, 0, 5.277897, 0, -0.74570835, -28.463104, -2.8903186, 9.655762)
+material_override = SubResource("StandardMaterial3D_waq7s")
+cast_shadow = 0
+mesh = ExtResource("5_sh2an")
+
+[node name="Cloud3" type="MeshInstance3D" parent="World" unique_id=1518185616]
+transform = Transform3D(0.8538618, 0, -3.1109083, 0, 3.225962, 0, 3.1109083, 0, 0.8538618, 25.79757, -4.264167, -18.952385)
+material_override = SubResource("StandardMaterial3D_waq7s")
+cast_shadow = 0
+mesh = ExtResource("5_sh2an")
+
+[node name="Cloud4" type="MeshInstance3D" parent="World" unique_id=286894209]
+transform = Transform3D(-0.9086835, 0, -3.3952882, 0, 3.5147812, 0, 3.3952882, 0, -0.9086835, -16.019976, 2.0990286, -5.781189)
+material_override = SubResource("StandardMaterial3D_waq7s")
+cast_shadow = 0
+mesh = ExtResource("5_sh2an")
+
+[node name="Cloud5" type="MeshInstance3D" parent="World" unique_id=778512993]
+transform = Transform3D(3.2106264, 0, 3.8224125, 0, 4.9918895, 0, -3.8224125, 0, 3.2106264, 16.553844, 1.8159671, 20.82856)
+material_override = SubResource("StandardMaterial3D_waq7s")
+cast_shadow = 0
+mesh = ExtResource("5_sh2an")
+
+[node name="Cloud6" type="MeshInstance3D" parent="World" unique_id=1079867588]
+transform = Transform3D(-1.171513, 0, -3.8628244, 0, 4.036565, 0, 3.8628244, 0, -1.171513, -18.254974, 5.7866, -48.957596)
+material_override = SubResource("StandardMaterial3D_waq7s")
+cast_shadow = 0
+mesh = ExtResource("5_sh2an")
+
+[node name="Cloud7" type="MeshInstance3D" parent="World" unique_id=1476517581]
+transform = Transform3D(2.853962, 0, -1.768419, 0, 3.3574402, 0, 1.768419, 0, 2.853962, 15.735878, -4.631663, 29.03122)
+material_override = SubResource("StandardMaterial3D_waq7s")
+cast_shadow = 0
+mesh = ExtResource("5_sh2an")
+
+[node name="Cloud8" type="MeshInstance3D" parent="World" unique_id=1546868753]
+transform = Transform3D(-2.2911806, 0, 2.823579, 0, 3.6362214, 0, -2.823579, 0, -2.2911806, 27.346962, 1.199678, 6.5833282)
+material_override = SubResource("StandardMaterial3D_waq7s")
+cast_shadow = 0
+mesh = ExtResource("5_sh2an")
+
+[node name="Cloud9" type="MeshInstance3D" parent="World" unique_id=366906337]
+transform = Transform3D(-2.066708, 0, -5.361065, 0, 5.745633, 0, 5.361065, 0, -2.066708, 32.140923, -5.8897867, -33.4886)
+material_override = SubResource("StandardMaterial3D_waq7s")
+cast_shadow = 0
+mesh = ExtResource("5_sh2an")
+
+[node name="Cloud10" type="MeshInstance3D" parent="World" unique_id=1077184808]
+transform = Transform3D(1.213539, 0, -5.230971, 0, 5.369891, 0, 5.230971, 0, 1.213539, 28.925644, 9.421112, -41.543335)
+material_override = SubResource("StandardMaterial3D_waq7s")
+cast_shadow = 0
+mesh = ExtResource("5_sh2an")
+
+[node name="Hero" type="Node3D" parent="." unique_id=1789532741]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Model" parent="Hero" unique_id=1755725390 instance=ExtResource("6_vxxyd")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hero" unique_id=1305491673]
+root_node = NodePath("../Model")
+libraries/ = ExtResource("7_a61uc")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=457416852]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=2002944592]
+transform = Transform3D(0.9781476, 0.028935717, -0.20588832, 0, 0.99026805, 0.1391731, 0.2079117, -0.13613184, 0.96862835, -1.4, 1.3, 5)
+current = true
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=361813824]
+
+[node name="Root" type="Control" parent="UI" unique_id=1332126195]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Menu" type="VBoxContainer" parent="UI/Root" unique_id=240525430]
+layout_mode = 0
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 70.0
+offset_top = -300.0
+offset_right = 640.0
+offset_bottom = 280.0
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="UI/Root/Menu" unique_id=1759132180]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_86cbq")
+theme_override_font_sizes/font_size = 96
+theme_override_colors/font_color = Color(1, 0.88, 0.45, 1)
+theme_override_constants/outline_size = 18
+text = "ยินดีด้วย!"
+
+[node name="Subtitle" type="Label" parent="UI/Root/Menu" unique_id=1827723906]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_tw72b")
+theme_override_font_sizes/font_size = 34
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "คุณผ่านครบทุกด่านแล้ว"
+
+[node name="StatsLabel" type="Label" parent="UI/Root/Menu" unique_id=155625691]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_86cbq")
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.75, 1, 0.75, 1)
+
+[node name="Spacer" type="Control" parent="UI/Root/Menu" unique_id=1454687644]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="UI/Root/Menu" unique_id=628467667]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "เล่นอีกครั้ง"
+
+[node name="MenuButton" type="Button" parent="UI/Root/Menu" unique_id=6822248]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "เมนูหลัก"
+
+[node name="Credits" type="Label" parent="UI/Root" unique_id=549805776]
+layout_mode = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -34.0
+offset_bottom = -10.0
+theme_override_fonts/font = ExtResource("9_tw72b")
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 1, 1, 0.8)
+text = "Base: 3D Platformer Starter Kit (SD Studios)  •  Models: Adventurer & Ultimate Stylized Nature Pack by Quaternius (poly.pizza, CC0)  •  Godot 4.7"
+horizontal_alignment = 1

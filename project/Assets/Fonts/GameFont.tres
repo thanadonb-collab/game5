@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" format=3]
+
+[ext_resource type="FontFile" path="res://Assets/Fonts/kanit-latin-700-normal.woff2" id="1_pjlek"]
+[ext_resource type="FontFile" path="res://Assets/Fonts/kanit-thai-700-normal.woff2" id="2_o150n"]
+
+[resource]
+fallbacks = Array[Font]([ExtResource("2_o150n")])
+base_font = ExtResource("1_pjlek")

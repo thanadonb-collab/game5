@@ -1,0 +1,262 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/GameUI.gd" id="1_ykvyr"]
+[ext_resource type="Texture2D" path="res://Assets/Textures/coin.png" id="2_lelo4"]
+[ext_resource type="FontVariation" path="res://Assets/Fonts/GameFont.tres" id="3_1ree7"]
+[ext_resource type="Texture2D" path="res://Assets/UI/heart.png" id="4_d2sja"]
+[ext_resource type="FontVariation" path="res://Assets/Fonts/BodyFont.tres" id="5_i4i0y"]
+
+[node name="HUD" type="CanvasLayer" unique_id=340258483]
+script = ExtResource("1_ykvyr")
+
+[node name="GameUI" type="Control" parent="." unique_id=1790907138]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="TopLeft" type="PanelContainer" parent="GameUI" unique_id=472350181]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 20.0
+offset_bottom = 18.0
+
+[node name="VBox" type="VBoxContainer" parent="GameUI/TopLeft" unique_id=1212834098]
+layout_mode = 2
+
+[node name="CoinRow" type="HBoxContainer" parent="GameUI/TopLeft/VBox" unique_id=17976737]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CoinTexture" type="TextureRect" parent="GameUI/TopLeft/VBox/CoinRow" unique_id=1063354438]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+texture = ExtResource("2_lelo4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CoinsLabel" type="Label" parent="GameUI/TopLeft/VBox/CoinRow" unique_id=1890008860]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1ree7")
+theme_override_font_sizes/font_size = 36
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+text = "0 / 0"
+
+[node name="Hearts" type="HBoxContainer" parent="GameUI/TopLeft/VBox" unique_id=128726701]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Heart1" type="TextureRect" parent="GameUI/TopLeft/VBox/Hearts" unique_id=1624269023]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("4_d2sja")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Heart2" type="TextureRect" parent="GameUI/TopLeft/VBox/Hearts" unique_id=255263970]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("4_d2sja")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Heart3" type="TextureRect" parent="GameUI/TopLeft/VBox/Hearts" unique_id=716596746]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("4_d2sja")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TopRight" type="PanelContainer" parent="GameUI" unique_id=1560286648]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -170.0
+offset_top = 18.0
+offset_right = -20.0
+grow_horizontal = 0
+
+[node name="TimeLabel" type="Label" parent="GameUI/TopRight" unique_id=110737208]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1ree7")
+theme_override_font_sizes/font_size = 34
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "00:00"
+horizontal_alignment = 1
+
+[node name="TitleBox" type="VBoxContainer" parent="GameUI" unique_id=1013218430]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -500.0
+offset_top = 110.0
+offset_right = 500.0
+mouse_filter = 2
+
+[node name="TitleLabel" type="Label" parent="GameUI/TitleBox" unique_id=1290724071]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1ree7")
+theme_override_font_sizes/font_size = 60
+theme_override_colors/font_color = Color(1, 0.92, 0.55, 1)
+theme_override_constants/outline_size = 14
+text = "Level"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="GameUI/TitleBox" unique_id=576452637]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_i4i0y")
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+horizontal_alignment = 1
+
+[node name="MessageLabel" type="Label" parent="GameUI" unique_id=1456829991]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = 40.0
+offset_right = 500.0
+offset_bottom = 110.0
+theme_override_fonts/font = ExtResource("3_1ree7")
+theme_override_font_sizes/font_size = 44
+theme_override_colors/font_color = Color(0.7, 1, 0.7, 1)
+theme_override_constants/outline_size = 12
+horizontal_alignment = 1
+
+[node name="HelpLabel" type="Label" parent="GameUI" unique_id=1204131251]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -40.0
+offset_right = 640.0
+offset_bottom = -12.0
+theme_override_fonts/font = ExtResource("5_i4i0y")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 0.85)
+text = "WASD / ลูกศร = เดิน   •   SPACE = กระโดด (2 ครั้ง = ตีลังกา)   •   เมาส์ / Q,E = หมุนกล้อง   •   ล้อเมาส์ = ซูม   •   P = หยุดเกม"
+horizontal_alignment = 1
+
+[node name="HintLabel" type="Label" parent="GameUI" unique_id=1516454642]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -90.0
+offset_right = 400.0
+offset_bottom = -50.0
+theme_override_fonts/font = ExtResource("3_1ree7")
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
+text = "คลิกที่หน้าจอเพื่อควบคุมกล้องด้วยเมาส์"
+horizontal_alignment = 1
+
+[node name="PausePanel" type="Control" parent="GameUI" unique_id=991366206]
+unique_name_in_owner = true
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Dim" type="ColorRect" parent="GameUI/PausePanel" unique_id=303066396]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.03, 0.1, 0.6)
+
+[node name="Center" type="CenterContainer" parent="GameUI/PausePanel" unique_id=1213291851]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBox" type="VBoxContainer" parent="GameUI/PausePanel/Center" unique_id=43417690]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="GameUI/PausePanel/Center/VBox" unique_id=21270204]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1ree7")
+theme_override_font_sizes/font_size = 64
+theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
+theme_override_constants/outline_size = 12
+text = "หยุดเกมชั่วคราว"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="GameUI/PausePanel/Center/VBox" unique_id=1880164212]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "เล่นต่อ"
+
+[node name="RestartButton" type="Button" parent="GameUI/PausePanel/Center/VBox" unique_id=945133448]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "เริ่มด่านใหม่"
+
+[node name="MenuButton" type="Button" parent="GameUI/PausePanel/Center/VBox" unique_id=529541332]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "เมนูหลัก"
+
+[node name="GameOverPanel" type="Control" parent="GameUI" unique_id=1114159884]
+unique_name_in_owner = true
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Dim" type="ColorRect" parent="GameUI/GameOverPanel" unique_id=2012977422]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.03, 0.1, 0.6)
+
+[node name="Center" type="CenterContainer" parent="GameUI/GameOverPanel" unique_id=1785018080]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBox" type="VBoxContainer" parent="GameUI/GameOverPanel/Center" unique_id=1363166789]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="GameUI/GameOverPanel/Center/VBox" unique_id=912370768]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1ree7")
+theme_override_font_sizes/font_size = 64
+theme_override_colors/font_color = Color(1, 0.4, 0.35, 1)
+theme_override_constants/outline_size = 12
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="RetryButton" type="Button" parent="GameUI/GameOverPanel/Center/VBox" unique_id=1671766374]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "ลองอีกครั้ง"
+
+[node name="GOMenuButton" type="Button" parent="GameUI/GameOverPanel/Center/VBox" unique_id=1567264349]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "เมนูหลัก"

@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/Checkpoint.gd" id="1_i3j2t"]
+[ext_resource type="PackedScene" path="res://Assets/Models/flag.glb" id="2_14q6d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d41ab"]
+size = Vector3(2, 3, 2)
+
+[node name="Checkpoint" type="Area3D" unique_id=238152992]
+script = ExtResource("1_i3j2t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=561136563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_d41ab")
+
+[node name="Flag" type="Node3D" parent="." unique_id=1797751981 instance=ExtResource("2_14q6d")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)

@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://cf0w0skqs3k64"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_t0xh4"]
+[ext_resource type="PackedScene" path="res://Assets/Models/Adventurer/Adventurer.glb" id="2_model"]
+[ext_resource type="AnimationLibrary" path="res://Assets/Models/Adventurer/AdventurerAnims.tres" id="3_anims"]
+[ext_resource type="Script" path="res://Scripts/CameraMovement.gd" id="5_pxu3x"]
+[ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://Assets/Resources/cloud.res" id="6_nkgvq"]
+[ext_resource type="AudioStream" uid="uid://ncq6fpsrcmjh" path="res://Assets/Audio/SFX/walking.ogg" id="7_asqdb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oo8ef"]
+radius = 0.38
+height = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02pkc"]
+diffuse_mode = 2
+specular_mode = 2
+metallic_specular = 0.0
+
+[sub_resource type="Curve" id="Curve_ooin1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.236318, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
+floor_snap_length = 0.3
+script = ExtResource("1_t0xh4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CapsuleShape3D_oo8ef")
+
+[node name="Model" parent="." instance=ExtResource("2_model")]
+transform = Transform3D(-0.8, 0, -1.20797e-07, 0, 0.8, 0, 1.20797e-07, 0, -0.8, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Model")
+libraries = {
+&"": ExtResource("3_anims")
+}
+
+[node name="Gimbal" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("5_pxu3x")
+
+[node name="Camera3D" type="Camera3D" parent="Gimbal"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2, 6)
+current = true
+fov = 70.0
+
+[node name="ParticleTrail" type="CPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_02pkc")
+amount = 30
+mesh = ExtResource("6_nkgvq")
+emission_shape = 1
+emission_sphere_radius = 0.2
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0.1, 0)
+scale_amount_min = 0.75
+scale_amount_curve = SubResource("Curve_ooin1")
+
+[node name="Footsteps" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_asqdb")
+pitch_scale = 0.75
+autoplay = true

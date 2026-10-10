@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/Traps/MovingPlatform.gd" id="1_2opgf"]
+
+[node name="MovingPlatform" type="AnimatableBody3D" unique_id=1673299823]
+script = ExtResource("1_2opgf")
